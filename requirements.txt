@@ -1,0 +1,7 @@
+chainer
+parallel_wavegan
+PyYaml
+unidecode
+ConfigArgparse
+g2p_en
+nltk

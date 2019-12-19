@@ -1,0 +1,15 @@
+version: 0.1
+python: 3.6
+cuda: 10
+entrypoint: python runway_model.py
+framework: pytorch
+spec:
+    cpu: True
+    gpu: True
+build_steps:
+    - pip install runway-python
+    - pip install -r requirements.txt
+    - git clone -q https://github.com/espnet/espnet.git
+    - cd espnet && git fetch && git checkout -b v.0.6.0 8bfb7ac6974699e9720558a4ef20376805e38d6b
+    - ./espnet/utils/download_from_google_drive.sh https://drive.google.com/open?id=1tv9GKyRT4CDsvUWKwH3s_OfXkiTi0gw7 downloads/ tar.gz > /dev/null 2>&1
+    - ./espnet/utils/download_from_google_drive.sh https://drive.google.com/open?id=1hiZn14ITUDM1nkn-GkaN_M3oaTOUcn1n downloads/ tar.gz > /dev/null 2>&1
